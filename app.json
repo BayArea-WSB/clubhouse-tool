@@ -1,0 +1,21 @@
+{
+  "name": "Awsb clubhouse tool",
+  "description": "Awsb Clubhouse utils",
+  "image": "heroku/python",
+  "repository": "https://github.com/heroku/python-getting-started",
+  "keywords": ["python", "awsb" ],
+  "env": {
+    "CLUBHOUSE_USER_ID": {
+      "description": "Get value  by runing python tool.py locally",
+      "required": true
+    },
+    "CLUBHOUSE_USER_TOKEN": {
+      "description": "Get value  by runing python tool.py locally",
+      "required": true
+    },
+    "CLUBHOUSE_USER_DEVICE": {
+      "description": "Get value  by runing python tool.py locally",
+      "required": true
+    }
+  }
+}
