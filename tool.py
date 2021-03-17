@@ -48,7 +48,7 @@ class ClubhouseUtil:
         result = self.client.start_phone_number_auth(self.phone)
         if not result["success"]:
             err_msg = (
-                f"[-] Error occured during authentication. ({result['error_message']})"
+                f"[-] Error occured during authentication. ({result})"
             )
             raise AuthException(err_msg)
 
@@ -99,7 +99,7 @@ class ClubhouseUtil:
 if __name__ == "__main__":
     if CLUBHOUSE_PHONENUMBER is None:
         print("Please config CLUBHOUSE_PHONENUMBER in env")
-    sys.exit(1)
+        sys.exit(1)
 
     ClubhouseUtil()
     # import pdb; pdb.set_trace()

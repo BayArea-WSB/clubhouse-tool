@@ -2,22 +2,11 @@ import sys
 from flask import Flask, request, jsonify
 from flask_restful import Api
 from flask_restful import Resource
-from flask_restful import reqparse, Api, Resource
+from flask_restful import Api, Resource
 
 from tool import ClubhouseUtil, AuthException
 
-parser = reqparse.RequestParser()
-
-class MyFlaskApp(Flask):
-    def run(self, **options):
-        if not clubtool.authenticated():
-            print(
-                "Please config CLUBHOUSE_USER_ID CLUBHOUSE_USER_TOKEN CLUBHOUSE_USER_DEVICE firstly!"
-            )
-            sys.exit(1)
-        super(MyFlaskApp, self).run(host=host, port=port, debug=debug, load_dotenv=load_dotenv, **options)
-
-app = MyFlaskApp(__name__)
+app = Flask(__name__)
 api = Api(app)
 
 
@@ -33,6 +22,9 @@ class ClubHouseValidate(Resource):
             return output_json(clubtool.check_members(usernames))
         except AuthException as e:
             return output_json(e.message, ok=False)
+        except Exception as e:
+            return output_json(str(e), ok=False)
+
 
 
 api.add_resource(ClubHouseValidate, "/validate")
