@@ -24,3 +24,18 @@ heroku logs --tail
 ```sh
 heroku local web
 ```
+
+# Example
+```
+> curl --header "Content-Type: application/json" \
+	--request POST \
+	--data '["michael0o0", "bugfree", "amy", "michael1"]'\
+	'http://127.0.0.1:5000/validate'
+{
+"data": {
+	"members": ["bugfree", "michael0o0"],
+	"no_members": ["amy", "michael1"]
+	},
+"ok": true
+}
+```
